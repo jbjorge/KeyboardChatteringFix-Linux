@@ -3,9 +3,11 @@ from collections import defaultdict
 from typing import DefaultDict, Dict, NoReturn
 
 import libevdev
-
+import time
 
 def filter_chattering(evdev: libevdev.Device, threshold: int) -> NoReturn:
+    # add delay to allow enter key to work after execution
+    time.sleep(1)
     # grab the device - now only we see the events it emits
     evdev.grab()
     # create a copy of the device that we can write to - this will emit the filtered events to anyone who listens
