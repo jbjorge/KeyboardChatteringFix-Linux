@@ -60,8 +60,11 @@ sudo python3 -m src
 ### Customization Options
 
 - -k KEYBOARD, --keyboard KEYBOARD
-  - Name of your chattering keyboard device as listed in /dev/input/by-id. If left unset, will be attempted to be retrieved
-  automatically. The device is captured `by-id`, and therefore in a persistent way.
+  - Name or absolute path of your chattering keyboard device. The tool searches both `/dev/input/by-id`
+  and `/dev/input/by-path`, so both USB and Bluetooth keyboards are detected automatically.
+  If left unset, will be attempted to be retrieved automatically. For Bluetooth reconnection support,
+  use a stable symlink from `/dev/input/by-id` or `/dev/input/by-path` rather than a raw
+  `/dev/input/eventX` path.
 
 - -t THRESHOLD, --threshold THRESHOLD
   - Filter time threshold in milliseconds. Default=30ms. Note: This does not denote the time between key presses, but
